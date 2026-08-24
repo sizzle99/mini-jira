@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: minijira
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/minijira
+    driver-class-name: org.postgresql.Driver
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
