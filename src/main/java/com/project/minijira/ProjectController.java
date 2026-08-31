@@ -52,6 +52,22 @@ public class ProjectController {
         return ResponseEntity.ok().body(responses);
     }
 
+    @PutMapping(value = "/updateProject/{id}")
+    public ResponseEntity<ProjectResponse> updateProject(@PathVariable Long id, @RequestBody ProjectRequest projectRequest){
+        log.info("updating project: " + projectRequest.getName());
 
+        ProjectResponse projectResponse = projectService.updateProject(id,projectRequest);
+        return ResponseEntity.ok().body(projectResponse);
+    }
+
+    @DeleteMapping("/deleteProject/{id}")
+    public ResponseEntity<Void> deleteProject(@PathVariable Long id){
+        log.info("Deleting project: {} ", id);
+
+        projectService.deleteProject(id);
+        log.info("Project with id: {} ", id + " has been deleted");
+
+        return ResponseEntity.noContent().build();
+    }
 
 }
